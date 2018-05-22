@@ -1,0 +1,9 @@
+- hosts: localhost
+  gather_facts: no
+  tasks:
+   - name: Create  VM
+     command: virt-install --name "{{item}}" --ram 2048 --vcpu=1 --disk path=/var/lib/libvirt/images/{{item}}.img,bus=virtio,size=12 -c ~/CentOS-7-x86_64-Minimal-1708.iso --network network=l2 --network network=internet -v
+     with_items:
+      - VM1
+      - VM2
+
